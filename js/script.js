@@ -33,7 +33,7 @@ function meuEscopo () {
             } else if (seuImc > 40) {
                 return `<p>Seu IMC é ${seuImc.toFixed(2)}<br/> OBESIDADE GRAU III (MÓRBIDA)</p>`
             } else {
-                return `ERRO</p>`
+                return `ERRO, use ponto ao invés da vírgula.</p>`
             }
         }
         
