@@ -7,29 +7,44 @@ function meuEscopo () {
     function recebeEventoForm (evento) {
         evento.preventDefault();
 
-        const peso = form.querySelector('.peso')
-        const altura = form.querySelector('.altura') 
-        const seuImc = ((altura.value * altura.value) / peso.value)     
-        
+        let peso = form.querySelector('.peso')
+        let altura = form.querySelector('.altura') 
+        let seuImc = ( peso.value / (altura.value * altura.value) )     
+        altura = parseFloat(altura)
+        peso = parseFloat(peso)
+
         imc.push({
             peso: peso.value,
             altura: altura.value,
         })
 
-        console.log(imc)
-
-     
-
-        resultado.innerHTML += `<p>seu IMC é ${seuImc.toFixed(2)}</p>`
+        const classificacaoImc = classificacao(seuImc)
+        function classificacao (seuImc) {
+            if (seuImc >= 0 && seuImc <= 1.85) {
+                return `<p>Seu IMC é ${seuImc.toFixed(2)}<br/> ABAIXO DO PESO</p>`
+            } else if (seuImc >= 18.6 && seuImc <= 24.9) {
+                return `<p>Seu IMC é ${seuImc.toFixed(2)}<br/> PESO IDEAL (PARABÉNS)</p>`
+            } else if (seuImc >= 25.0 && seuImc <= 29.9) {
+                return `<p>Seu IMC é ${seuImc.toFixed(2)}<br/> LEVEMENTE ACIMA DO PESO</p>`
+            } else if (seuImc >= 30.0 && seuImc <= 34.9) {
+                return `<p>Seu IMC é ${seuImc.toFixed(2)}<br/> OBESIDADE GRAU I</p>`
+            } else if (seuImc >= 35.0&& seuImc <= 39.9) {
+                return `<p>Seu IMC é ${seuImc.toFixed(2)}<br/> OBESIDADE GRAU II (SEVERA)</p>`
+            } else if (seuImc > 40) {
+                return `<p>Seu IMC é ${seuImc.toFixed(2)}<br/> OBESIDADE GRAU III (MÓRBIDA)</p>`
+            } else {
+                return `ERRO</p>`
+            }
+        }
+        
+        
+        resultado.innerHTML = `<p>${classificacaoImc}</p>`
         this.reset()
         
     }
 
-    
-
     form.addEventListener('submit', recebeEventoForm)
-    
-    
+
 }
 
 meuEscopo()
