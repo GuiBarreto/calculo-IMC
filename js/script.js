@@ -12,6 +12,7 @@ function meuEscopo () {
         let seuImc = ( peso.value / (altura.value * altura.value) )     
         altura = parseFloat(altura)
         peso = parseFloat(peso)
+        
 
         imc.push({
             peso: peso.value,
@@ -33,7 +34,7 @@ function meuEscopo () {
             } else if (seuImc > 40) {
                 return `<p>Seu IMC é ${seuImc.toFixed(2)}<br/> OBESIDADE GRAU III (MÓRBIDA)</p>`
             } else {
-                return `ERRO, use ponto ao invés da vírgula.</p>`
+                return `ERRO: Use ponto ao invés da vírgula.</p>`
             }
         }
         
