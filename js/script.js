@@ -1,8 +1,6 @@
 function meuEscopo () {
     const form = document.querySelector('.form')
     const resultado = document.querySelector('.resultado')
-   
-    const imc = []
 
     function recebeEventoForm (evento) {
         evento.preventDefault();
@@ -12,12 +10,7 @@ function meuEscopo () {
         let seuImc = ( peso.value / (altura.value * altura.value) )     
         altura = parseFloat(altura)
         peso = parseFloat(peso)
-        
 
-        imc.push({
-            peso: peso.value,
-            altura: altura.value,
-        })
 
         const classificacaoImc = classificacao(seuImc)
         function classificacao (seuImc) {
