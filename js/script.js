@@ -8,8 +8,10 @@ function meuEscopo () {
         let peso = form.querySelector('.peso')
         let altura = form.querySelector('.altura') 
         let seuImc = ( peso.value / (altura.value * altura.value) )     
-        altura = parseFloat(altura)
-        peso = parseFloat(peso)
+        altura = Number(altura)
+        peso = Number(peso)
+
+        
 
 
         const classificacaoImc = classificacao(seuImc)
@@ -27,7 +29,7 @@ function meuEscopo () {
             } else if (seuImc > 40) {
                 return `<p>Seu IMC é ${seuImc.toFixed(2)}<br/> OBESIDADE GRAU III (MÓRBIDA)</p>`
             } else {
-                return `ERRO: Use ponto ao invés da vírgula.</p>`
+                return `ERRO: Valor digitado inválido.</p>`
             }
         }
         
